@@ -54,4 +54,9 @@ public class DataManager {
     public String getReceiverPhone(){
         return _receiverPhone;
     }
+    
+    private String _subject;
+    public String getSubject(){
+        return _subject;
+    }
 }

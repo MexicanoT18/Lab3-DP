@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 
-import lab3.dp.ComercialLetter;
+import lab3.dp.EmailLetter;
 import lab3.dp.DataManager;
-import lab3.dp.Main;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -17,12 +16,12 @@ import static org.mockito.Mockito.when;
  *
  * @author Lucas
  */
-public class ComercialLetterTest {
+public class EmailLetterTest {
     
     private DataManager data1;
     private DataManager data2;
     
-    public ComercialLetterTest() {
+    public EmailLetterTest() {
     }
     
     static public DataManager mockData1(){
@@ -64,53 +63,53 @@ public class ComercialLetterTest {
     
     @Test
     public void testHeader(){
-        ComercialLetter letter1 = new ComercialLetter(data1);
-        String expected1 = "18/10/2016\n\nLucas França, Rua H8A, 118\nGustavo Mirisola, Praça Marechal Eduardo Gomes, 50\n";
+        EmailLetter letter1 = new EmailLetter(data1);
+        String expected1 = "From: Lucas França [lucas@labces28.com]\n" +
+                           "Sent: 18/10/2016\n" +
+                           "To: Gustavo Mirisola [mirisola@labces28.com]\n" +
+                           "Subject: Data de prova\n"
+                + "______________________________________________________________________\n";
         assertEquals(expected1, letter1.header());
         
-        ComercialLetter letter2 = new ComercialLetter(data2);
-        String expected2 = "19/10/2016\n\nGustavo Mirisola, Praça Marechal Eduardo Gomes, 50\nLucas França, Rua H8A, 118\n";
+        EmailLetter letter2 = new EmailLetter(data2);
+        String expected2 = "From: Gustavo Mirisola [mirisola@labces28.com]\n" +
+                           "Sent: 19/10/2016\n" +
+                           "To: Lucas França [lucas@labces28.com]\n" +
+                           "Subject: Re: Data de prova\n"
+                + "______________________________________________________________________\n";
         assertEquals(expected2, letter2.header());
     }
     
     @Test
     public void testBody(){
-        ComercialLetter letter1 = new ComercialLetter(data1);
-        String expected1 = "Dear Gustavo Mirisola,\n\n";
+        EmailLetter letter1 = new EmailLetter(data1);
+        String expected1 = "Hello Gustavo Mirisola,\n\n";
         assertEquals(expected1, letter1.body());
         
-        ComercialLetter letter2 = new ComercialLetter(data2);
-        String expected2 = "Dear Lucas França,\n\n";
+        EmailLetter letter2 = new EmailLetter(data2);
+        String expected2 = "Hello Lucas França,\n\n";
         assertEquals(expected2, letter2.body());
     }
     
     @Test
     public void testConclusion(){
-        ComercialLetter letter1 = new ComercialLetter(data1);
-        String expected1 = "Sincerely,\n";
+        EmailLetter letter1 = new EmailLetter(data1);
+        String expected1 = "Best regards,\n";
         assertEquals(expected1, letter1.conclusion());
         
-        ComercialLetter letter2 = new ComercialLetter(data2);
-        String expected2 = "Sincerely,\n";
+        EmailLetter letter2 = new EmailLetter(data2);
+        String expected2 = "Best regards,\n";
         assertEquals(expected2, letter2.conclusion());
     }
     
     @Test
     public void testSignature(){
-        ComercialLetter letter1 = new ComercialLetter(data1);
-        String expected1 = "\n"
-                + "                                                    __________________\n"
-                + "                                                          Lucas França\n"
-                + "                                                       phone: 11223344\n"
-                + "                                             email: lucas@labces28.com";
+        EmailLetter letter1 = new EmailLetter(data1);
+        String expected1 = "\nLucas França";
         assertEquals(expected1, letter1.signature());
         
-        ComercialLetter letter2 = new ComercialLetter(data2);
-        String expected2 = "\n"
-                + "                                                    __________________\n"
-                + "                                                      Gustavo Mirisola\n"
-                + "                                                       phone: 55667788\n"
-                + "                                          email: mirisola@labces28.com";
+        EmailLetter letter2 = new EmailLetter(data2);
+        String expected2 = "\nGustavo Mirisola";
         assertEquals(expected2, letter2.signature());
     }
 }

@@ -14,7 +14,7 @@ import javax.naming.ldap.ManageReferralControl;
 public class ComercialLetter implements Model{
     
     private DataManager _dataManager;
-    private final int WIDTH = 100;
+    private final int WIDTH = 70;
     
     public ComercialLetter(DataManager manager) {
         _dataManager = manager;
@@ -44,7 +44,7 @@ public class ComercialLetter implements Model{
     
     @Override
     public String signature() {
-        return "\n\n" + fitToRight("__________________") + "\n"
+        return "\n" + fitToRight("__________________") + "\n"
                 + fitToRight(_dataManager.getSenderName()) + "\n"
                 + fitToRight("phone: " +_dataManager.getSenderPhone()) + "\n"
                 + fitToRight("email: " + _dataManager.getSenderEmail());

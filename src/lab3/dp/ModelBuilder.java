@@ -21,4 +21,9 @@ public class ModelBuilder {
         ComercialLetter comercialLetter = new ComercialLetter(_dataManager);
         return comercialLetter.model();
     }
+    
+    public String getEmailLetterModel(){
+        EmailLetter emailLetter = new EmailLetter(_dataManager);
+        return emailLetter.model();
+    }
 }
