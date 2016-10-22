@@ -17,13 +17,39 @@ public class ModelBuilder {
         _dataManager = manager;
     }
     
-    public String getCommercialLetterModel(){
-        ComercialLetter comercialLetter = new ComercialLetter(_dataManager);
-        return comercialLetter.model();
+    public String getCommercialLetterModel(String language) throws IllegalArgumentException{
+        if (language.equals("english")){
+            EnglishComercialLetter letter = new EnglishComercialLetter(_dataManager);
+            return letter.model();
+        }
+        else if (language.equals("portuguese")){
+            PortugueseComercialLetter letter = new PortugueseComercialLetter(_dataManager);
+            return letter.model();
+        }
+        else throw new IllegalArgumentException("Invalid language");
     }
     
-    public String getEmailLetterModel(){
-        EmailLetter emailLetter = new EmailLetter(_dataManager);
-        return emailLetter.model();
+    public String getEmailLetterModel(String language) throws IllegalArgumentException{
+        if (language.equals("english")){
+            EnglishEmailLetter letter = new EnglishEmailLetter(_dataManager);
+            return letter.model();
+        }
+        else if (language.equals("portuguese")){
+            PortugueseEmailLetter letter = new PortugueseEmailLetter(_dataManager);
+            return letter.model();
+        }
+        else throw new IllegalArgumentException("Invalid language");
+    }
+    
+    public String getInformalLetterModel(String language)throws IllegalArgumentException{
+        if (language.equals("english")){
+            EnglishInformalLetter letter = new EnglishInformalLetter(_dataManager);
+            return letter.model();
+        }
+        else if (language.equals("portuguese")){
+            PortugueseInformalLetter letter = new PortugueseInformalLetter(_dataManager);
+            return letter.model();
+        }
+        else throw new IllegalArgumentException("Invalid language");
     }
 }

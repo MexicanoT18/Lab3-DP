@@ -1,19 +1,21 @@
+
+import java.util.Date;
+import lab3.dp.DataManager;
+import lab3.dp.Person;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lab3.dp;
-
-import java.util.Date;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /**
  *
  * @author Lucas
  */
-public class Main {
+public class DataMocker {
     
     static public Person mockPerson1(){
         Person person1 = mock(Person.class);
@@ -64,20 +66,4 @@ public class Main {
         when(data2.getSubject()).thenReturn("Re: Data de prova");
         return data2;
     }
-    
-    public static void main(String[] args) {
-        
-        DataManager data1 = mockData1();
-        
-        ModelBuilder builder = new ModelBuilder(data1);
-        String comercialLetter1 = builder.getCommercialLetterModel("portuguese");
-        System.out.println(comercialLetter1);
-        
-        String emailLetter = builder.getEmailLetterModel("portuguese");
-        System.out.println(emailLetter);
-        
-        String informalLetter = builder.getInformalLetterModel("portuguese");
-        System.out.println(informalLetter);
-    }
-    
 }

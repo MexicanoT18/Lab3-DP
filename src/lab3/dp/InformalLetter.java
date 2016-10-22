@@ -9,7 +9,7 @@ package lab3.dp;
  *
  * @author Lucas
  */
-public abstract class ComercialLetter implements Model{
+public abstract class InformalLetter implements Model{
     
     protected DataManager _dataManager;
     protected final int WIDTH = 70;
@@ -23,4 +23,14 @@ public abstract class ComercialLetter implements Model{
     public abstract String body();
     public abstract String conclusion();
     public abstract String signature();
+    
+    protected String fitToRight(String text) throws IllegalArgumentException{
+        if (text.length() > WIDTH){
+            throw new IllegalArgumentException("Text too big to fit commercial letter");
+        }
+        while(text.length() < WIDTH){
+            text = " " + text;
+        }
+        return text;
+    }
 }
